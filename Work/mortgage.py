@@ -17,3 +17,29 @@ def mortgage_calculator_ex_1_8():
     print(f"Total paid {total_paid:.1f} over {num_month} months.")
 
 
+# Exercise 1.9
+def mortgage_calculator_ex_1_9(
+    extra_payment_start_month,
+    extra_payment_end_month,
+    extra_payment,
+):
+    principal = 500_000.
+    rate = 0.05
+    payment = 2684.11
+    total_paid = 0.
+    num_month = 0
+
+    while principal > 0:
+        num_month += 1
+        principal = principal * (1 + rate / 12) - payment
+        total_paid = total_paid + payment
+
+        if extra_payment_start_month <= num_month <= extra_payment_end_month:
+            principal -= extra_payment
+            total_paid += extra_payment
+
+    print(f"Total paid {total_paid:.1f} over {num_month} months.")
+
+
+if __name__ == "__main__":
+    mortgage_calculator_ex_1_9(60, 108, 1000)
